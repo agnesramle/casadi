@@ -7,4 +7,4 @@ res[1] = cos(a);
 '''
 f = jit('myfcn', 2, 2, body, {'compiler':'shell'})
 
-print f([3, 4])
+print(f([3, 4]))

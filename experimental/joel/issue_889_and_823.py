@@ -29,10 +29,10 @@ A = 2*DM.ones(sp_diag(3)); A[1,0] = 1; A[2,0] = 1; A[2,1] = 1 # lower triangular
 # Permute
 A = vertcat((A[1,:],A[2,:],A[0,:]))
 
-print "A = "
+print("A = ")
 A.print_dense()
 
-print "SX"
+print("SX")
 AA = ssym("A",A.sparsity())
 
 r = ssym("r",3)
@@ -42,7 +42,7 @@ f.init()
 DM.ones(f.sparsity_jac(0,0)).print_dense()
 DM.ones(f.sparsity_jac(1,0)).print_dense()
 
-print "SX, implicit function"
+print("SX, implicit function")
 x = ssym("x",3)
 res = SXFunction([x,r,AA],[mul(AA,x)-r])
 f = NewtonImplicitSolver(res)
@@ -52,7 +52,7 @@ f.init()
 DM.ones(f.sparsity_jac(0,0)).print_dense()
 DM.ones(f.sparsity_jac(1,0)).print_dense()
 
-print "MX"
+print("MX")
 AA = msym("A",A.sparsity())
 
 r = msym("r",3)
@@ -65,7 +65,7 @@ f.init()
 DM.ones(f.sparsity_jac(0,0)).print_dense()
 DM.ones(f.sparsity_jac(1,0)).print_dense()
 
-print "MX, implicit function"
+print("MX, implicit function")
 x = msym("x",3)
 res = MXFunction([x,r,AA],[mul(AA,x)-r])
 f = NewtonImplicitSolver(res)

@@ -1290,7 +1290,7 @@ class MXtests(casadiTestCase):
     i = IM(Sparsity.lower(3),range(6))
 
     i.print_dense()
-    print i.T.nz[:]
+    print((i.T.nz[:]))
 
     T = X.nz[i]
 
@@ -1753,7 +1753,7 @@ class MXtests(casadiTestCase):
           for (casadiop, numpyop,name, flags) in self.pool.zip():
             if 'nozero' in flags and (v==0 or not sp.is_dense()): continue
             r = casadiop([x])
-            print r
+            print(r)
             self.assertTrue(r.is_constant())
             
             self.checkarray(r.to_DM(),numpyop(x_),str([x_,name]))
@@ -1836,7 +1836,7 @@ class MXtests(casadiTestCase):
     t1 = matrix_expand(e,[d])
     self.assertEqual(n_nodes(t1),6)
     
-    print e,t0,t1
+    print((e,t0,t1))
     
     
     outs = []
@@ -1850,7 +1850,7 @@ class MXtests(casadiTestCase):
       if outs>1:
         self.checkarray(outs[0],outs[-1])
       
-    print outs
+    print(outs)
     
   def test_kron(self):
     a = sparsify(DM([[1,0,6],[2,7,0]]))
@@ -2030,13 +2030,13 @@ class MXtests(casadiTestCase):
 
     w = vertsplit(x,2)
     r = __builtin__.sum([vertsplit(i)+[y] for i in w],[])
-    print "vertcat:", r
-    print "result:", vertcat(*r)
+    print(("vertcat:", r))
+    print(("result:", vertcat(*r)))
 
     w = vertsplit(x,2)
     r = __builtin__.sum([vertsplit(i) for i in w],[])
-    print "vertcat:", r
-    print "result:", vertcat(*r+[y])
+    print(("vertcat:", r))
+    print(("result:", vertcat(*r+[y])))
     
     self.assertTrue(is_equal(vertcat(*vertsplit(x)),x))
     
@@ -2076,13 +2076,13 @@ class MXtests(casadiTestCase):
 
     w = horzsplit(x,2)
     r = __builtin__.sum([horzsplit(i)+[y] for i in w],[])
-    print "vertcat:", r
-    print "result:", horzcat(*r)
+    print(("vertcat:", r))
+    print(("result:", horzcat(*r)))
 
     w = horzsplit(x,2)
     r = __builtin__.sum([horzsplit(i) for i in w],[])
-    print "vertcat:", r
-    print "result:", horzcat(*r+[y])
+    print(("vertcat:", r))
+    print(("result:", horzcat(*r+[y])))
 
     self.assertTrue(is_equal(horzcat(*horzsplit(x)),x))
     
@@ -2102,7 +2102,7 @@ class MXtests(casadiTestCase):
     aa_ = range(100,105)
     
     def evalvertsplit(a,*args):
-      print vertsplit(a,*args)
+      print((vertsplit(a,*args)))
       f = Function("f", dvars+[y,z,zz,aa],vertsplit(a,*args))
       f_in = [0]*f.n_in()
       for i in range(5):
@@ -2181,7 +2181,7 @@ class MXtests(casadiTestCase):
     aa_ = range(100,105)
     
     def evalhorzsplit(a,*args):
-      print horzsplit(a,*args)
+      print((horzsplit(a,*args)))
       f = Function("f", dvars+[y,z,zz,aa],horzsplit(a,*args))
       f_in = [0]*f.n_in()
       for i in range(5):
@@ -2410,10 +2410,10 @@ class MXtests(casadiTestCase):
     for fun in [lambda x: x[0]*x[1],lambda x: x[0]*sin(x[1])]:
       def hessian1(f, x): return hessian(f, x)[0]
       for op in [c.gradient, jacobian, hessian1]:
-        print fun, op
+        print((fun, op))
         x = MX.sym("x",2)
-        print fun(x)
-        print op(fun(x),x)
+        print((fun(x)))
+        print((op(fun(x),x)))
         f = Function("f", [x],[op(fun(x),x)])        
 
         x = SX.sym("x",2)

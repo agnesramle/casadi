@@ -100,7 +100,7 @@ class ADtests(casadiTestCase):
       return [X]
 
     def testje(xyz):
-      print vertcat(*[xyz.nz[0],xyz.nz[0]+2*xyz.nz[1]**2,xyz.nz[0]+2*xyz.nz[1]**3+3*xyz.nz[2]**4,xyz.nz[3]]).shape
+      print((vertcat(*[xyz.nz[0],xyz.nz[0]+2*xyz.nz[1]**2,xyz.nz[0]+2*xyz.nz[1]**3+3*xyz.nz[2]**4,xyz.nz[3]]).shape))
       
     self.mxoutputs = {
        "column": {
@@ -581,7 +581,7 @@ class ADtests(casadiTestCase):
           (in1,v1,x.nz[IM([[1,0]])].T*y.nz[IM([[0,2]])],blockcat([[MX(1,1),y.nz[0]],[y.nz[2],MX(1,1)]])),
           (in1,v1,x.nz[c.diag([1,0])]*y.nz[c.diag([0,2])],blockcat([[MX(1,1),y.nz[0]],[MX(1,1),MX(1,1)],[MX(1,1),MX(1,1)],[y.nz[2],MX(1,1)]])),
      ]:
-      print out
+      print(out)
       fun = Function("fun", inputs,[out,jac])
       funsx = fun.expand("expand_fun")
       fun_ad = [Function("fun", inputs,[out,jac], {'ad_weight':w, 'ad_weight_sp':w}) for w in [0,1]]

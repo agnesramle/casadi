@@ -73,5 +73,5 @@ ubg = b
 lbg = [-100,-100,-100,-100,-100]
 
 sol = solver(lbx=lbx, ubx=ubx, lbg=lbg, ubg=ubg)
-print sol["x"]
+print(sol["x"])
 #! Nested optimization

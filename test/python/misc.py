@@ -196,7 +196,7 @@ class Misctests(casadiTestCase):
       nlpsol(123)
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "nlpsol(str,str,Function,Dict)" in e.message
       assert "You have: nlpsol(int)" in e.message
       assert "::" not in e.message
@@ -206,7 +206,7 @@ class Misctests(casadiTestCase):
       vertcat(*123)
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "vertcat(*[SX]" in e.message
       assert "vertcat(*[DM" in e.message
       assert "You have: vertcat(*int)" in e.message
@@ -217,7 +217,7 @@ class Misctests(casadiTestCase):
       substitute(123)
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "substitute(SX,SX,SX)" in e.message
       assert "substitute([SX] ,[SX] ,[SX] )" in e.message
       assert "You have: substitute(int)" in e.message
@@ -228,7 +228,7 @@ class Misctests(casadiTestCase):
       load_nlpsol(132)
       self.assertTrue(False)
     except TypeError as e:
-      print e.message
+      print((e.message))
       assert "Failed to convert input to str" in e.message
       assert "::" not in e.message
       assert "std" not in e.message
@@ -239,33 +239,33 @@ class Misctests(casadiTestCase):
       [x]+ x
       self.assertTrue(False)
     except TypeError as e:
-      print e.message
+      print((e.message))
 
     try:
       x + [x]
       self.assertTrue(False)
     except TypeError as e:
-      print e.message
+      print((e.message))
 
     try:
       x.reshape(2)
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "reshape(SX,(int,int) )" in e.message
 
     try:
       x.reshape(("a",2))
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "You have: reshape((str,int))" in e.message
       
     try:
       diagsplit("s")
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "diagsplit(SX,int)" in e.message
       assert "diagsplit(DM ,int)" in e.message
 
@@ -273,14 +273,14 @@ class Misctests(casadiTestCase):
       DM("df")
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "  DM (" in e.message
 
     try:
       vertcat(*[1,SX.sym('x'),MX.sym('x')])
       self.assertTrue(False)
     except NotImplementedError as e:
-      print e.message
+      print((e.message))
       assert "  vertcat(*" in e.message
         
   def test_getscheme(self):
@@ -313,13 +313,13 @@ class Misctests(casadiTestCase):
     
     f = Function('f', [x],[v])
     
-    print f
+    print(f)
     
     f_out = f(-6)
     try :
       f_out = f(1)
     except Exception as e:
-      print str(e)
+      print((str(e)))
       self.assertTrue("x must be larger than 3" in str(e))
 
   @requiresPlugin(nlpsol,"ipopt")

@@ -182,7 +182,7 @@ class Functiontests(casadiTestCase):
     
     for n in ([63,64,65,127,128,129] if args.run_slow else [63,64,65]):
       for m in ([63,64,65,127,128,129] if args.run_slow else [63,64,65]):
-        print (n,m)
+        print((n,m))
         sp = Sparsity.dense(n,m)
         
         test(sp)
@@ -492,10 +492,10 @@ class Functiontests(casadiTestCase):
           ([Z[0]],[Z[0]]*n),
           ([MX()]*3,[MX()]*3),
         ]:
-      print "args", Z_alt
+      print(("args", Z_alt))
 
       for parallelization in ["serial","openmp","unroll"] if args.run_slow else ["serial"]:
-        print parallelization
+        print(parallelization)
         res = fun.map(map(lambda x: horzcat(*x),[X,Y,Z_alt,V]),parallelization)
 
 
@@ -884,8 +884,8 @@ class Functiontests(casadiTestCase):
 
     Fref = f.map("f","serial",n*m,[2],[0])
     
-    print Fref(horzcat(*[vec(xx),vec(yy)]).T,vec(z),x0)
-    print F(z,x0)
+    print((Fref(horzcat(*[vec(xx),vec(yy)]).T,vec(z),x0)))
+    print((F(z,x0)))
     
     zs = MX.sym("z", z.shape)
     xs = MX.sym("x",2)

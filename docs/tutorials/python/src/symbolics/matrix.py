@@ -32,23 +32,23 @@ from numpy import *
 #! --------------------------------------
 #! The python name for Matrix<double> is DM
 a = DM.zeros(3,4)
-print a
+print(a)
 #! The string representation shows only the structural non-zero entries. In this case there are none.
 #! Let's make a DM with some structural non-zero entries.
 w = DM(Sparsity(4,3,[0,2,2,3],[1,2,1]),[3,2.3,8])
-print w
+print(w)
 #! Internally, the Matrix<> class uses a Compressed Column Format which containts the offset to the first nonzero on each column ...
-print "column offsets: ", w.colind()
+print("column offsets: ", w.colind())
 #! ... the row for each nonzero ...
-print "row: ", w.row()
+print("row: ", w.row())
 #! ... and the nonzero data entries:
-print "nonzeros: ", w.nonzeros()
+print("nonzeros: ", w.nonzeros())
 #! Conversion
 #! --------------
 #! DM can easily be converted into other data formats
-print w.nonzeros()
-print w.full()
-print array(w)
-print matrix(w)
-print w.sparse()
+print(w.nonzeros())
+print(w.full())
+print(array(w))
+print(matrix(w))
+print(w.sparse())
 

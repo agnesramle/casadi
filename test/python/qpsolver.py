@@ -49,7 +49,7 @@ if has_qpsol("cplex"):
 # if has_qpsol("sqic"):
 #   qpsols.append(("sqic",{},{}))
 
-print qpsols
+print(qpsols)
 
 class QpsolTests(casadiTestCase):
 

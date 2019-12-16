@@ -97,7 +97,7 @@ for c in classes:
   if not(temp is None):
     meta['file']=temp.attrib["file"]
     
-print metadata["casadi::Integrator"]
+print(metadata["casadi::Integrator"])
 
 for v in metadata.values(): # Remove templating if not in index.xml
   for i,vv in enumerate(v['parents']):
@@ -370,7 +370,7 @@ for name,meta in sorted(metadata.items()):
   if "casadi::PluginInterface" in meta["hierarchy"]:
     m = re.search("'(\w+)' plugin for (\w+)",meta["brief"])
     if not m:
-      print "This plugin is undocumented. add \\pluginbrief{class,name} to it: " + meta["file"]
+      print("This plugin is undocumented. add \\pluginbrief{class,name} to it: " + meta["file"])
       #print meta["file"]
     else:
       f.write("/** \\addtogroup plugin_%s_%s\n\\n\n\\par\n" % (m.group(2),m.group(1)))
@@ -388,7 +388,7 @@ for name,meta in sorted(metadata.items()):
       f.write( "*/\n")
     
     t = name
-    print "test", name, myoptionskeys
+    print("test", name, myoptionskeys)
     f.write("/** \\addtogroup general_%s\n\\n\n\\par\n" % t.replace("casadi::","") )
     f.write("<a name='options'></a><table>\n")
     f.write("<caption>List of available options</caption>\n")

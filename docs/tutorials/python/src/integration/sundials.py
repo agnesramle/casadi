@@ -85,7 +85,7 @@ F = integrator("F", "cvodes", dae, opts)
 #$   [x(tf),q(tf),rx(t0),rq(t0)]  = F(x(t0),p,rx(0),rp)
 #$ \end{verbatim}
 #$ 
-print "%d -> %d" % (F.n_in(),F.n_out())
+print("%d -> %d" % (F.n_in(),F.n_out()))
 #! Setup the Integrator to integrate from 0 to t=tend, starting at [x0,y0]
 #! The output of Integrator is the state at the end of integration.
 #! To obtain the whole trajectory of states, use Simulator:
@@ -197,8 +197,8 @@ def out(u):
         w0 = f(u)
 	return w0.full()
 
-print out(0)
-print out(1)
+print(out(0))
+print(out(1))
 
 #! Let's plot the results
 uv=numpy.linspace(-1,1,100)

@@ -372,7 +372,7 @@ class Doxy2SWIG:
             if not os.path.exists(fname):
                 fname = os.path.join(self.my_dir,  fname)
             if not self.quiet:
-                print "parsing file: %s"%fname
+                print("parsing file: %s"%fname)
             p = Doxy2SWIG(fname, self.include_function_definition, self.quiet)
             p.generate()
             self.pieces.extend(self.clean_pieces(p.pieces))

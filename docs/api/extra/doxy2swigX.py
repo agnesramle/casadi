@@ -40,7 +40,7 @@ for line in file('../Doxyfile.in','r'):
     if m:
       aliases[m.group(1)]=m.group(2)
 
-print aliases
+print(aliases)
 
 
 def astext(node,whitespace=False,escape=True,strictspacing=False):
@@ -84,7 +84,7 @@ class Doxy2SWIG_X(Doxy2SWIG):
         for e3 in e2.getElementsByTagName("node"):
           for e4 in e3.getElementsByTagName("label"):
             if "Node" in e4.firstChild.data:
-              print "skipped"
+              print("skipped")
               try:
                 self.xmldoc.removeChild(e)
               except:
@@ -190,14 +190,14 @@ class Doxy2SWIG_X(Doxy2SWIG):
           if "SparsityInterface" in refid: filtered = False
           if filtered: continue
 
-          print c.attributes['refid'].value, c.attributes['kind'].value
+          print(c.attributes['refid'].value, c.attributes['kind'].value)
 
           fname = refid + '.xml'
           if not os.path.exists(fname):
               fname = os.path.join(self.my_dir,  fname)
           if fname.endswith("cpp.xml"): continue
           if not self.quiet:
-              print "parsing file: %s"%fname
+              print("parsing file: %s"%fname)
           p = Doxy2SWIG_X(fname, self.include_function_definition, self.quiet,internal=self.internal,deprecated=self.deprecated,merge=self.merge,groupdoc=self.groupdoc)
           p.generate()
           self.pieces.extend(self.clean_pieces(p.pieces))
@@ -452,7 +452,7 @@ class Doxy2SWIG_X(Doxy2SWIG):
           total = u"".join(pieces)
           totalnowrap = total.replace("\n"," ")
           if (aliases["noswig"] in totalnowrap) or (aliases["nopython"] in totalnowrap):
-             print "skipping", origin
+             print("skipping", origin)
              continue
           if total in grouped_dict:
              grouped_dict[total][0].append(origin)

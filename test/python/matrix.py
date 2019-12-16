@@ -698,7 +698,7 @@ class Matrixtests(casadiTestCase):
     with self.assertRaises(Exception):
       tril2symm(DM.ones(5,3))
     
-    print DM.ones(5,5).nnz_upper()-DM.ones(5,5).nnz_diag()
+    print((DM.ones(5,5).nnz_upper()-DM.ones(5,5).nnz_diag()))
     
     with self.assertRaises(Exception):
       tril2symm(DM.ones(5,5))
@@ -850,16 +850,16 @@ class Matrixtests(casadiTestCase):
         c_ref = DM(linalg.solve(a,b))
         c_ref = sparsify(c_ref)
                 
-        print sA.dim(), sB.dim()
+        print((sA.dim(), sB.dim()))
 
         try:
           self.checkarray(c,c_ref)
           self.assertTrue(min((IM.ones(c_ref.sparsity())-IM.ones(c.sparsity())).nonzeros())==0)
         except Exception as e:
           c.print_dense()
-          print "sol:"
+          print("sol:")
           c.sparsity().spy()
-          print "ref:"
+          print("ref:")
           c_ref.sparsity().spy()
           c_ref.print_dense()
           a.sparsity().sanity_check()
