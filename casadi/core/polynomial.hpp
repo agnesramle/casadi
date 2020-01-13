@@ -26,7 +26,7 @@
 #ifndef CASADI_POLYNOMIAL_HPP
 #define CASADI_POLYNOMIAL_HPP
 
-# include "printable_object.hpp"
+#include "printable_object.hpp"
 
 namespace casadi {
 

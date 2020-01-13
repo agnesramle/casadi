@@ -266,7 +266,7 @@ namespace casadi {
 } // namespace casadi
 
 #ifndef SWIG
-
+#define NOMINMAX
 namespace std {
   template<>
   class CASADI_EXPORT numeric_limits<casadi::SXElem>{

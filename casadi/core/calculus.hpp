@@ -226,6 +226,7 @@ namespace casadi {
   inline double sign(double x) { return x<0 ? -1 : x>0 ? 1 : x;}
 
   /// fmin, fmax and erf should be available if C99 and/or C++11 required
+
   inline double fmin(double x, double y) throw() { return std::min(x, y);}
   inline int fmin(int x, int y) throw() { return std::min(x, y);}
   inline double fmax(double x, double y) throw() { return std::max(x, y);}
