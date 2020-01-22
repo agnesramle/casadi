@@ -1,3 +1,5 @@
+%include "windows.i"
+
 %exception  casadi::Function::gradient(const std::string &iind, const std::string &oind) {
  CATCH_OR_NOT(DEPRECATED_MSG("") $action)
 }
